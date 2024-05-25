@@ -1,0 +1,73 @@
+.room-listing {
+  .card {
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-img-top {
+    height: 150px;
+    object-fit: cover;
+  }
+
+  .card-body {
+    padding: 10px;
+  }
+
+  .card-title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .card-text {
+    font-size: 16px;
+    color: #666;
+  }
+
+  .actions {
+    font-size: 18px;
+    color: #337ab7;
+    cursor: pointer;
+
+    &:hover {
+      color: #23527c;
+    }
+
+    .fa-pencil {
+      margin-right: 10px;
+    }
+  }
+  .book-now-btn {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #1e7e34;
+    }
+  }
+}
+
+.room-paginator {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.page-item {
+  margin: 0 10px;
+}
+
+.page-link {
+  color: #337ab7;
+  text-decoration: none;
+
+  &:hover {
+    color: #23527c;
+  }
+}

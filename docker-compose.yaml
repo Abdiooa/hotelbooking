@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  webapp:
+    container_name: hotelbookingwebapp
+    build:
+      context: ./bookinghotelwebapp
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    depends_on:
+      - backendapp
+    volumes:
+      - ./bookinghotelwebapp:/app
+      - /app/node_modules
+    command: npm run dev
+
+  backendapp:
+    container_name: hotelbookingbackendapp
+    build:
+      context: ./bookinghotelbackend
+      dockerfile: Dockerfile
+    ports:
+      - "8070:8070"
+    depends_on:
+      - db
+  db:
+    container_name: db
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=dadinos
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=hotelbookingdb

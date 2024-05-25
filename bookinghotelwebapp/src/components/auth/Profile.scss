@@ -1,0 +1,81 @@
+.profile {
+  .profile-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 3px solid #ddd;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  .booking-history {
+    margin-top: 20px;
+
+    .booking-item {
+      background: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      padding: 15px;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: translateY(-5px);
+      }
+
+      .booking-room-image {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        object-fit: cover;
+      }
+
+      .row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        .col-md-2 {
+          flex: 0 0 auto;
+          width: 16.666667%;
+          max-width: 16.666667%;
+          padding: 0 10px;
+          box-sizing: border-box;
+
+          p {
+            margin: 0 0 10px;
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.5;
+          }
+        }
+      }
+
+      .booking-status {
+        font-weight: bold;
+        text-transform: capitalize;
+
+        &.confirmed {
+          color: #28a745;
+        }
+
+        &.pending {
+          color: #ffc107;
+        }
+
+        &.cancelled {
+          color: #dc3545;
+        }
+      }
+    }
+  }
+}

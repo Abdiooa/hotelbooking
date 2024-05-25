@@ -1,0 +1,61 @@
+/* Login Style */
+
+.login {
+  .container {
+    margin: 110px auto;
+    padding: 20px;
+  }
+
+  .row {
+    margin-top: 20px;
+  }
+
+  h2 {
+    font-weight: bold;
+    color: #333;
+  }
+
+  form {
+    padding: 20px;
+  }
+
+  .form-label {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .form-control {
+    height: 40px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+  }
+
+  .btn-primary {
+    background-color: #337ab7;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    background-color: #23527c;
+  }
+
+  p {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+  }
+
+  p a {
+    color: #337ab7;
+    text-decoration: none;
+  }
+
+  p a:hover {
+    text-decoration: underline;
+  }
+}
