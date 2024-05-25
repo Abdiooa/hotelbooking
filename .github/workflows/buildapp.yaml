@@ -31,7 +31,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
 
       - name: Set up && Build with Maven
         uses: stCarolas/setup-maven@v4.4
