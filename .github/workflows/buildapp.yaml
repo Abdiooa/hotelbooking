@@ -40,11 +40,14 @@ jobs:
       - name: Build backend spring app with Maven
         run: mvn -f ./bookinghotelbackend/pom.xml --batch-mode --update-snapshots clean install -DskipTests
 
-      - name: Build Docker images
-        run: docker compose build
+      - name: Build and Start Docker Compose
+        run: docker compose up --build -d
 
-      - name: List Docker images
+      - name: Docker images
         run: docker images
+
+      - name: Running Containers
+        run: docker ps
 
       - name: Stop Containers
         if: always()
