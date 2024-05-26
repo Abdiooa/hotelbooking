@@ -55,7 +55,7 @@ jobs:
       - name: Tag and Push webapp image
         run: |
           docker tag hotelbooking-webapp:latest ${{ secrets.DOCKERHUB_USERNAME }}/hotelbooking-webapp:latest
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/hotelbookingwebapp:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/hotelbooking-webapp:latest
 
       - name: Tag and Push backendapp image
         run: |
