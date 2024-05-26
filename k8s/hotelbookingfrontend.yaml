@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hotelbookingwebapp-deployment
+spec:
+  selector:
+    matchLabels:
+      app: hotelbookingwebapp
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: hotelbookingwebapp
+    spec:
+      containers:
+        - name: hotelbookingwebapp
+          image: abdiaoo/hotelbookingwebapp:latest
+          ports:
+            - containerPort: 8081
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hotelbookingwebapp-service
+spec:
+  selector:
+    app: hotelbookingwebapp
+  ports:
+    - protocol: TCP
+      port: 8081
+      targetPort: 8081

@@ -22,14 +22,16 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8070:8070"
-    depends_on:
-      - db
-  db:
-    container_name: db
-    image: postgres
-    ports:
-      - "5432:5432"
-    environment:
-      - POSTGRES_PASSWORD=dadinos
-      - POSTGRES_USER=postgres
-      - POSTGRES_DB=hotelbookingdb
+    # depends_on:
+    #   - db
+  # db:
+  #   container_name: db
+  #   image: postgres
+  #   ports:
+  #     - "5432:5432"
+  #   environment:
+  #     - POSTGRES_PASSWORD=dadinos
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_DB=hotelbookingdb
+  #   volumes:
+  #     - db:/var/lib/postgres

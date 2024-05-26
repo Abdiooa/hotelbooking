@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hotelbookingbackendapp-deployment
+spec:
+  selector:
+    matchLabels:
+      app: hotelbookingbackendapp
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: hotelbookingbackendapp
+    spec:
+      containers:
+        - name: hotelbookingbackendapp
+          image: abdiaoo/hotelbookingbackendapp:latest
+          ports:
+            - containerPort: 8070
+          env:
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-conf
+                  key: host
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-conf
+                  key: name
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: postgres_user
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: postgres_password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hotelbookingbackendapp-service
+spec:
+  selector:
+    app: hotelbookingbackendapp
+  ports:
+    - port: 8070
+      targetPort: 8070
+      protocol: TCP
+  type: NodePort

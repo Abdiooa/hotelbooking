@@ -40,16 +40,29 @@ jobs:
       - name: Build backend spring app with Maven
         run: mvn -f ./bookinghotelbackend/pom.xml --batch-mode --update-snapshots clean install -DskipTests
 
-      - name: Build and Start Docker Compose
-        run: docker compose up --build -d
+      - name: Build Docker Compose
+        run: docker compose build
 
       - name: Docker images
         run: docker images
 
-      - name: Running Containers
-        run: docker ps
+      - name: Login to Docker Hub
+        run: docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
 
-      - name: Stop Containers
-        if: always()
-        continue-on-error: true
-        run: docker compose down -v
+      - name: Tag and Push webapp image
+        run: |
+          docker tag hotelbookingwebapp:latest ${{ secrets.DOCKER_USERNAME }}/hotelbookingwebapp:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/hotelbookingwebapp:latest
+
+      - name: Tag and Push backendapp image
+        run: |
+          docker tag hotelbookingbackendapp:latest ${{ secrets.DOCKER_USERNAME }}/hotelbookingbackendapp:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/hotelbookingbackendapp:latest
+
+      # - name: Running Containers
+      #   run: docker ps
+
+      # - name: Stop Containers
+      #   if: always()
+      #   continue-on-error: true
+      #   run: docker compose down -v
