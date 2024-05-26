@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: hotelbookingwebapp
-          image: abdiaoo/hotelbookingwebapp:latest
+          image: abdiaoo/hotelbooking-webapp:latest
           ports:
             - containerPort: 8081
 ---

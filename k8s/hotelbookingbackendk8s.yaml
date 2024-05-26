@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: hotelbookingbackendapp
-          image: abdiaoo/hotelbookingbackendapp:latest
+          image: abdiaoo/hotelbooking-backendapp:latest
           ports:
             - containerPort: 8070
           env:
@@ -23,6 +23,8 @@ spec:
                 configMapKeyRef:
                   name: postgres-conf
                   key: host
+            - name: DB_PORT
+              value: "5432"
             - name: DB_NAME
               valueFrom:
                 configMapKeyRef:
