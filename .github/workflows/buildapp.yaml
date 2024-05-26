@@ -54,13 +54,13 @@ jobs:
 
       - name: Tag and Push webapp image
         run: |
-          docker tag hotelbookingwebapp:latest ${{ secrets.DOCKERHUB_USERNAME }}/hotelbookingwebapp:latest
+          docker tag hotelbooking-webapp:latest ${{ secrets.DOCKERHUB_USERNAME }}/hotelbooking-webapp:latest
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/hotelbookingwebapp:latest
 
       - name: Tag and Push backendapp image
         run: |
-          docker tag hotelbookingbackendapp:latest ${{ secrets.DOCKERHUB_USERNAME }}/hotelbookingbackendapp:latest
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/hotelbookingbackendapp:latest
+          docker tag hotelbooking-backendapp:latest ${{ secrets.DOCKERHUB_USERNAME }}/hotelbooking-backendapp:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/hotelbooking-backendapp:latest
 
       # - name: Running Containers
       #   run: docker ps
