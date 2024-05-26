@@ -31,6 +31,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+          cache: "npm"
 
       - name: Set up && Build with Maven
         uses: stCarolas/setup-maven@v4.4
@@ -46,12 +47,11 @@ jobs:
       - name: Docker images
         run: docker images
 
-      - name: Login to Docker Hub
+      - name: Echo secrets for debugging
         run: |
-          echo "${{ secrets.DOCKERHUB_USERNAME }}"
-          echo "${{ secrets.DOCKERHUB_PASSWORD }}"
-          echo ${{ secrets.DOCKERHUB_TOKEN }}
-          docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+          echo "Docker Hub Username: ${{ secrets.DOCKERHUB_USERNAME }}"
+          echo "Docker Hub Password: ${{ secrets.DOCKERHUB_PASSWORD }}"
+          echo "Docker Hub Token: ${{ secrets.DOCKERHUB_TOKEN }}"
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
@@ -61,13 +61,13 @@ jobs:
 
       - name: Tag and Push webapp image
         run: |
-          docker tag hotelbookingwebapp:latest ${{ secrets.DOCKER_USERNAME }}/hotelbookingwebapp:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/hotelbookingwebapp:latest
+          docker tag hotelbookingwebapp:latest ${{ secrets.DOCKERHUB_USERNAME }}/hotelbookingwebapp:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/hotelbookingwebapp:latest
 
       - name: Tag and Push backendapp image
         run: |
-          docker tag hotelbookingbackendapp:latest ${{ secrets.DOCKER_USERNAME }}/hotelbookingbackendapp:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/hotelbookingbackendapp:latest
+          docker tag hotelbookingbackendapp:latest ${{ secrets.DOCKERHUB_USERNAME }}/hotelbookingbackendapp:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/hotelbookingbackendapp:latest
 
       # - name: Running Containers
       #   run: docker ps
