@@ -21,8 +21,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: hotelbookingwebapp-service
+  name: hotelbookingwebapp
 spec:
+  type: ClusterIP
   selector:
     app: hotelbookingwebapp
   ports:

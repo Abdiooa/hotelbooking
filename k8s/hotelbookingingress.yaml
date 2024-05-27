@@ -2,6 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: hotelbooking-ingress
+  namespace: default
   annotations:
     kubernetes.io/ingress.class: nginx
 spec:
@@ -13,6 +14,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: hotelbookingwebapp-service
+                name: hotelbookingwebapp
                 port:
-                  number: 8081
+                  number: 81

@@ -6,11 +6,13 @@ metadata:
     app: postgres
     tier: database
 spec:
-  ports:
-    - port: 5432
+  type: ClusterIP
   selector:
     app: postgres
     tier: database
+  ports:
+    - port: 5432
+      targetPort: 5432
   clusterIP: None
 ---
 apiVersion: v1
