@@ -42,3 +42,4 @@ export const getUserByEmail = async (email: string) => {
     return Promise.reject(error);
   }
 };
+

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://hotelbookingbackendapp:8070";
+const BASE_URL = "http://localhost:8070";
 const axiosHttp = axios.create({
   baseURL: `${BASE_URL}`,
 });

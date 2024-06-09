@@ -10,7 +10,7 @@ spec:
       image: nginx
       ports:
         - name: web
-          containerPort: 81
+          containerPort: 8082
           protocol: TCP
 ---
 apiVersion: v1
@@ -22,7 +22,7 @@ spec:
     role: webserver
   ports:
     - protocol: TCP
-      port: 81
+      port: 8082
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -33,13 +33,13 @@ metadata:
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-    - host: ninja.k8s.local
+    - host: ninja.example
       http:
         paths:
           - backend:
               service:
                 name: ninja-svc
                 port:
-                  number: 81
+                  number: 8082
             path: /
             pathType: Prefix

@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hotelbookingbackendapp-deployment
+  name: hotelbookingapi-deployment
 spec:
   selector:
     matchLabels:
-      app: hotelbookingbackendapp
+      app: hotelbookingapi
   replicas: 1
   template:
     metadata:
       labels:
-        app: hotelbookingbackendapp
+        app: hotelbookingapi
     spec:
       containers:
-        - name: hotelbookingbackendapp
+        - name: hotelbookingapi
           image: abdiaoo/hotelbooking-backendapp:latest
           ports:
             - containerPort: 8070
@@ -44,12 +44,28 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: hotelbookingbackendapp-service
+  name: hotelbookingapi-service
 spec:
   selector:
-    app: hotelbookingbackendapp
+    app: hotelbookingapi
   ports:
     - port: 8070
       targetPort: 8070
       protocol: TCP
   type: ClusterIP
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: hotelbooking-ingress
+# spec:
+#   rules:
+#   - http:
+#       paths:
+#       - pathType: Prefix
+#         path: "/"
+#         backend:
+#           service:
+#             name: hotelbookingbackendapp-service
+#             port:
+#               number: 8070
