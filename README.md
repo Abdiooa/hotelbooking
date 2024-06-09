@@ -1,1 +1,1 @@
-# hotelbooking
+# hotelbooking fullstack application
